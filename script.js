@@ -1,33 +1,39 @@
-// function updateClock() {
-//     const now = new Date();
-//     let h = now.getHours().toString().padStart(2, '0');
-//     let m = now.getMinutes().toString().padStart(2, '0');
-//     let s = now.getSeconds().toString().padStart(2, '0');
-//     document.getElementById('clock').textContent = `${h}:${m}:${s}`;
-// }
-
-// updateClock(); // Initial call
-// setInterval(updateClock, 1000);
-
+const clock = document.getElementById("clock");
+const date = document.getElementById("date");
 
 function updateClock() {
     const now = new Date();
-    let h = now.getHours();
-    let m = now.getMinutes().toString().padStart(2, '0');
-    let s = now.getSeconds().toString().padStart(2, '0');
-    let period = 'AM';
 
-    if (h >= 12) {
-        period = 'PM';
-        if (h > 12) h -= 12;
-    }
-    if (h === 0) {
-        h = 12;
+    let hours = now.getHours();
+    const minutes = now.getMinutes().toString().padStart(2, "0");
+    const seconds = now.getSeconds().toString().padStart(2, "0");
+
+    let period = "AM";
+
+    if (hours >= 12) {
+        period = "PM";
     }
 
-    h = h.toString().padStart(2, '0');
-    document.getElementById('clock').textContent = `${h}:${m}:${s} ${period}`;
+    if (hours === 0) {
+        hours = 12;
+    } else if (hours > 12) {
+        hours -= 12;
+    }
+
+    hours = hours.toString().padStart(2, "0");
+
+    clock.textContent = `${hours}:${minutes}:${seconds} ${period}`;
+
+    date.textContent = now.toLocaleDateString("en-IN", {
+        weekday: "long",
+        day: "2-digit",
+        month: "long",
+        year: "numeric"
+    });
 }
 
-updateClock(); // Initial call
+// Initial update
+updateClock();
+
+// Update every second
 setInterval(updateClock, 1000);
