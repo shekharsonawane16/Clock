@@ -2,17 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Digital Clock</title>
-     <!-- App Icons -->
+
     <link rel="icon" type="image/png" sizes="512x512" href="alarm.png">
     <link rel="apple-touch-icon" sizes="512x512" href="alarm.png">
     <link rel="manifest" href="manifest.json">
+
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <div class="clock-container">
-        <div id="clock"></div>
-    </div>
+
+    <main class="clock-container">
+
+        <p class="label">DIGITAL CLOCK</p>
+
+        <div id="clock">00:00:00 AM</div>
+
+        <div id="date">Loading...</div>
+
+    </main>
+
     <script src="script.js"></script>
 </body>
 </html>
